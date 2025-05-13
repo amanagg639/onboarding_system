@@ -14,7 +14,11 @@ public class CandidateDocument {
     @Id @GeneratedValue
     private long id;
     private String documentType;
-    private String documentUrl;
+
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] fileData;
+
     private Boolean isVerified;
 
     @ManyToOne(cascade = CascadeType.ALL)

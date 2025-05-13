@@ -96,4 +96,16 @@ public class CandidateController {
                 candidateEducation.getYearOfGraduation()
         ));
     }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<?> updateCandidateStatus(@PathVariable long id, @RequestBody Status status){
+        candidateService.updateCandidateStatus(id, status);
+        return ResponseEntity.ok(new MessageResponse("Candidate status updated successfully!"));
+    }
+
+    @PutMapping("/{id}/onboardStatus")
+    public ResponseEntity<?> updateCandidateOnboardStatus(@PathVariable long id, @RequestBody OnboardingStatus status){
+        candidateService.updateCandidateOnboardStatus(id, status);
+        return ResponseEntity.ok(new MessageResponse("Candidate onboarding status updated successfully!"));
+    }
 }
