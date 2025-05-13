@@ -11,12 +11,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class JobOfferNotification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "candidate_id", referencedColumnName = "id")
     private Candidate candidate;
 
@@ -30,4 +32,5 @@ public class JobOfferNotification {
 
     @Column(name = "error_message")
     private String errorMessage;
+
 }

@@ -12,7 +12,7 @@ import java.util.Properties;
 public class EmailConfig {
     @Bean
     public JavaMailSender javaMailSender(ApplicationArguments springApplicationArguments) {
-        String password = "${spring.mail.password}";
+        String password = "hbzzgxwapitlhuvh";
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);

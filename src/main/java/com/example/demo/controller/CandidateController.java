@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CandidateDto;
-import com.example.demo.dto.CandidateEducationDto;
-import com.example.demo.dto.CandidatePersonalInfoDto;
-import com.example.demo.dto.MessageResponse;
+import com.example.demo.dto.*;
 import com.example.demo.entity.Candidate;
 import com.example.demo.entity.CandidateEducation;
 import com.example.demo.entity.CandidatePersonalInfo;
@@ -40,6 +37,11 @@ public class CandidateController {
         return ResponseEntity.ok(new MessageResponse("Candidate education added successfully!"));
     }
 
+    @PostMapping("/{candidateId}/bank-info")
+    public ResponseEntity<?>  addBankInfo(@RequestBody @Validated CandidateBankInfoDto candidateBankInfoDto, @PathVariable long candidateId) {
+        candidateService.addBankInfo(candidateBankInfoDto, candidateId);
+        return ResponseEntity.ok(new MessageResponse("Candidate bank info added successfully!"));
+    }
     
 
     @GetMapping

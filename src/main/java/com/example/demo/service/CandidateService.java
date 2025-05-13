@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.CandidateBankInfoDto;
 import com.example.demo.dto.CandidateDto;
 import com.example.demo.dto.CandidateEducationDto;
 import com.example.demo.dto.CandidatePersonalInfoDto;
 import com.example.demo.entity.Candidate;
+import com.example.demo.entity.CandidateBankInfo;
 import com.example.demo.entity.CandidateEducation;
 import com.example.demo.entity.CandidatePersonalInfo;
 import com.example.demo.enums.OnboardingStatus;
@@ -109,5 +111,14 @@ public class CandidateService {
         }catch (CandidateNotFoundException e){
             throw new CandidateNotFoundException(candidateId);
         }
+    }
+
+    public void addBankInfo(CandidateBankInfoDto candidateBankInfoDto, long candidateId) {
+        CandidateBankInfo candidateBankInfo = new CandidateBankInfo();
+        candidateBankInfo.setAccountNumber(candidateBankInfoDto.getAccountNumber());
+        candidateBankInfo.setBankName(candidateBankInfo.getBankName());
+        candidateBankInfo.setIfscCode(candidateBankInfo.getIfscCode());
+        candidateBankInfo.setCandidate(candidateRepository.findById(candidateId).orElseThrow(() -> new CandidateNotFoundException(candidateId)));
+        candidateBankInfoRepository.save(candidateBankInfo);
     }
 }
